@@ -1,4 +1,4 @@
-//EL Shield y el double damage hay q pasarselo al player
+
 
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -286,7 +286,7 @@ public class Board extends JPanel implements Runnable, Commons {
                                 }
                                 if ("doubleDamage".equals(alien.ventaja)) {
                                     if (!player.inmunidad && !player.congelar && player.tiemporestante == 0) {
-                                        player.setDamage(true, 2, 5);
+                                        player.setDamage(true, 2, 5);// CAMBIAR
                                         System.out.println("dobleD");
                                         contador = 0;
 
@@ -498,6 +498,7 @@ public class Board extends JPanel implements Runnable, Commons {
         }
         message="Puntos: "+puntos;
         gameOver();
+        Sound.Backgraundmusic();// Demostracion
     }
 
     private class TAdapter extends KeyAdapter {

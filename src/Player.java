@@ -66,7 +66,7 @@ public class Player extends Sprite implements Commons {
                 }
             }
         };
-        timer.scheduleAtFixedRate(task,500,2000);
+        timer.scheduleAtFixedRate(task,500,1000);
     }
 
 
