@@ -7,7 +7,7 @@ import java.util.List;
 public class Score {
     int score;
     String player;
-    static String file = "C:\\Users\\matig\\Desktop\\SpaceInvaders\\src\\src\\edu\\austral\\prog2_2018c2\\src.Leaderscore\\Tabla.txt";
+    static String file = "Leaderscore\\Tabla.txt";
 
     public Score(String jugador, int puntaje){
         player = jugador;
