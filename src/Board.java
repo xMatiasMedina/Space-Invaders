@@ -1,4 +1,7 @@
+package src;
 
+import src.Alien;
+import src.Commons;
 
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -23,7 +26,8 @@ public class Board extends JPanel implements Runnable, Commons {
     private Player player;
     private Shot shot;
     private Shield shield;
-
+    Score score;
+    String playerN;
 
     private final int ALIEN_INIT_X = 150;
     private final int ALIEN_INIT_Y = 5;
@@ -498,7 +502,11 @@ public class Board extends JPanel implements Runnable, Commons {
         }
         message="Puntos: "+puntos;
         gameOver();
-        Sound.Backgraundmusic();// Demostracion
+        //Sound.Backgraundmusic();// Demostracion
+        score = new Score(playerN, this.puntos);
+        score.SendToFile();
+        Score.Ranking();
+        Score.print();
     }
 
     private class TAdapter extends KeyAdapter {

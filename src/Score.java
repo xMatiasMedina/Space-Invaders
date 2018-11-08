@@ -9,43 +9,48 @@ public class Score {
     String player;
     static String file = "Leaderscore\\Tabla.txt";
 
-    public Score(String jugador, int puntaje){
+    public Score(String jugador, int puntaje) {
         player = jugador;
         score = puntaje;
     }
-    public int GetPoints(){
+
+    public int GetPoints() {
         return score;
     }
 
-    public String Refractor(){
+    public String Refractor() {
         return player + ": " + score;
     }
-    public void SendToFile(){
+
+    public void SendToFile() {
         try {
             FileWriter writer = new FileWriter(file, true);
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String line;
-            while((line = reader.readLine()) == null){writer.append("\n" + this.Refractor());
+            while ((line = reader.readLine()) == null) {
+                writer.append("\n" + this.Refractor());
             }
             writer.write("\n" + this.Refractor());
             writer.close();
 
-        }catch (IOException e){}
+        } catch (IOException e) {
+        }
 
     }
-    public static List<Score> Ranking(){
+
+    public static List<Score> Ranking() {
         try {
             Score inter;
             Score inter2;
             List<Score> ranking = new LinkedList<>();
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String line;
-            while ((line = reader.readLine()) != null){
+            while ((line = reader.readLine()) != null) {
                 Object[] atr = line.split(": ");
-                ranking.add(new Score((String)atr[0], Integer.parseInt((String)atr[1])));
+                ranking.add(new Score((String) atr[0], Integer.parseInt((String) atr[1])));
             }
-            for(int i = 0; i < ranking.size() -1; i++) {
-                for (int j = i+1; j < ranking.size(); j++) {
+            for (int i = 0; i < ranking.size() - 1; i++) {
+                for (int j = i + 1; j < ranking.size(); j++) {
                     if (ranking.get(i).GetPoints() < ranking.get(j).GetPoints()) {
                         inter = ranking.get(i);
                         inter2 = ranking.get(j);
@@ -74,22 +79,25 @@ public class Score {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String line;
             File temp = new File(file);
-            if(temp.exists()){
+            if (temp.exists()) {
                 RandomAccessFile raf = new RandomAccessFile(temp, "rw");
                 raf.setLength(0);
             }
-            for(int i = 0; i < ranking.size(); i++) {
-            /**    while ((line = reader.readLine()) == null) {
-                }**/
-                writer.write(ranking.get(i).Refractor() + "\n");
-
+            if (ranking.size() < 10) {
+                for (int i = 0; i < ranking.size(); i++) {
+                    writer.write(ranking.get(i).Refractor() + "\n");
+                }
+            } else {
+                for (int i = 0; i < 10; i++) {
+                    writer.write(ranking.get(i).Refractor() + "\n");
+                }
+                writer.close();
             }
-            writer.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-            String line;
         }
+
     }
 }
