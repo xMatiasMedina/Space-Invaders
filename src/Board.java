@@ -196,26 +196,51 @@ public class Board extends JPanel implements Runnable, Commons {
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
-
-    public void gameOver() {
+    private void RedoArea(){
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Graphics g = this.getGraphics();
+        g.clearRect(50, BOARD_WIDTH / 2 - 30, BOARD_WIDTH - 100, 50);
+        g.setColor(new Color(0, 32, 48));
+        g.fillRect(50, BOARD_WIDTH / 2 - 30, BOARD_WIDTH - 100, 50);
+        g.setColor(Color.white);
+        g.drawRect(50, BOARD_WIDTH / 2 - 30, BOARD_WIDTH - 100, 50);
+    }
+    public void gameOver() throws InterruptedException {
 
         Graphics g = this.getGraphics();
 
         g.setColor(Color.black);
         g.fillRect(0, 0, BOARD_WIDTH, BOARD_HEIGHT);
 
-        g.setColor(new Color(0, 32, 48));
-        g.fillRect(50, BOARD_WIDTH / 2 - 30, BOARD_WIDTH - 100, 50);
-        g.setColor(Color.white);
-        g.drawRect(50, BOARD_WIDTH / 2 - 30, BOARD_WIDTH - 100, 50);
+        this.RedoArea();
 
         Font small = new Font("Helvetica", Font.BOLD, 14);
         FontMetrics metr = this.getFontMetrics(small);
 
         g.setColor(Color.white);
         g.setFont(small);
-        g.drawString(message, (BOARD_WIDTH - metr.stringWidth(message)) / 2,
+        g.drawString("Game over", (BOARD_WIDTH - metr.stringWidth(message)) / 2,
                 BOARD_WIDTH / 2);
+
+        this.RedoArea();
+
+        g.drawString("Score: " + puntos, (BOARD_WIDTH - metr.stringWidth(message)) / 2,
+                BOARD_WIDTH / 2);
+
+        this.RedoArea();
+
+
+
+
+
+        /**JFrame frame = new JFrame();
+         JLabel label = new JLabel("Introduzca su nombre: ");
+         JTextField field = new JTextField();**/
+
     }
 
     public void animationCycle() throws InterruptedException {
@@ -493,16 +518,19 @@ public class Board extends JPanel implements Runnable, Commons {
             beforeTime = System.currentTimeMillis();
         }
 
-        gameOver();
-        sleep=7542;
         try {
-            Thread.sleep(sleep);
+            gameOver();
         } catch (InterruptedException e) {
-            System.out.println("interrupted");
+            e.printStackTrace();
         }
-        message="Puntos: "+puntos;
-        gameOver();
         //Sound.Backgraundmusic();// Demostracion
+        Score.PrintScore pScore = new Score.PrintScore();
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        playerN = pScore.GetName();
         score = new Score(playerN, this.puntos);
         score.SendToFile();
         Score.Ranking();

@@ -1,5 +1,8 @@
 package src;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -7,7 +10,7 @@ import java.util.List;
 public class Score {
     int score;
     String player;
-    static String file = "Leaderscore\\Tabla.txt";
+    static String file = "C:\\Users\\matig\\Desktop\\Space-Invaders\\src\\Leaderscore\\Tabla.txt";
 
     public Score(String jugador, int puntaje) {
         player = jugador;
@@ -85,11 +88,18 @@ public class Score {
             }
             if (ranking.size() < 10) {
                 for (int i = 0; i < ranking.size(); i++) {
-                    writer.write(ranking.get(i).Refractor() + "\n");
-                }
+                    if(i == ranking.size() -1) {
+                        writer.write(ranking.get(i).Refractor());
+                        }else {writer.write(ranking.get(i).Refractor() + "\n");
+                     }
+                    }
             } else {
                 for (int i = 0; i < 10; i++) {
-                    writer.write(ranking.get(i).Refractor() + "\n");
+                    if(i == ranking.size() -1) {
+                        writer.write(ranking.get(i).Refractor());
+
+                    }else {writer.write(ranking.get(i).Refractor() + "\n");
+                    }
                 }
                 writer.close();
             }
@@ -99,5 +109,50 @@ public class Score {
             e.printStackTrace();
         }
 
+    }
+    public static class PrintScore extends JFrame implements ActionListener {
+        JTextField nombre;
+        JLabel name;
+        String devolver;
+
+        public PrintScore(){
+            JFrame score = new JFrame();
+
+            score.setVisible(true);
+            score.setResizable(false);
+            score.setSize(450, 150);// uds ya sabe q hacer
+            score.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            score.setLocationRelativeTo(null);
+
+            JButton cuadro = new JButton();
+            JPanel panel = new JPanel();
+
+            JLabel texto = new JLabel("Ingrese su nombre:\t");
+            name= new JLabel("Su nombre es:\t");
+            nombre = new JTextField(30);
+            nombre.addActionListener(this);
+
+            cuadro.add(nombre);
+            panel.add(texto);
+            panel.add(cuadro);
+            panel.add(name);
+            score.add(panel);
+
+            score.setVisible(true);
+
+            paintComponents(getGraphics());
+        }
+
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(e.getSource()==nombre){
+                name.setText("Su nombre es:\t" + nombre.getText());
+                devolver = nombre.getText();
+            }
+        }
+        public String GetName(){
+            return devolver;
+        }
     }
 }
