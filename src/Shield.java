@@ -1,28 +1,32 @@
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Shield extends  Sprite{
 
     boolean shieldActivity=false;
-    int shields=4;
+    static List<Shield> shields;
     int vidaRestante;
-    String fondo="src/images/Shield.jpg";
+    String fondo="src/images/Shield.png";
 
+    private static final int SHIELD_INIT_X = 20;
+    private static final int SHIELD_INIT_Y = 255;
   //  int posicionInicialEsudo_X=
-    private int posicionInicialEsudo_Y=250;
 
 
 
 
-    Shield(){
-        initShield();
+
+    Shield(int x, int y){
+        initShield(x,y);
     }
 
-    public void initShield(){
+    public void initShield(int x, int y){
 
         ImageIcon escudo= new ImageIcon(fondo);
         setImage(escudo.getImage());
-       // setX();
-        setY(posicionInicialEsudo_Y);
+        setX(x);
+        setY(y);
 
     }
 
@@ -39,4 +43,13 @@ public class Shield extends  Sprite{
         return shieldActivity;
     }
 
+    static List<Shield> getShields(){
+        shields= new ArrayList<>();
+        for (int i = 0; i < 4 ; i++) {
+            shields.add(new Shield( SHIELD_INIT_X+ 80 * i, SHIELD_INIT_Y));
+        }
+        return shields;
+    }
+
 }
+//setDying

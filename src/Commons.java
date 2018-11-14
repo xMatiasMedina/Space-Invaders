@@ -1,4 +1,4 @@
-package src;
+
 
 public interface Commons {
     public static final int BOARD_WIDTH = 358;
@@ -15,4 +15,6 @@ public interface Commons {
     public static final int DELAY = 17;
     public static final int PLAYER_WIDTH = 15;
     public static final int PLAYER_HEIGHT = 10;
+    public static final int SHIELD_WIDTH=70;
+    public static final int SHIELD_HEIGHT=20;
 }

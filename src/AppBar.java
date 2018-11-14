@@ -113,7 +113,7 @@ public class AppBar extends JFrame implements MenuListener ,ActionListener, KeyL
 
 
         //Poner el fondo al panel
-            imageFondo.setIcon(new ImageIcon("C://Users//alejandro//Desktop//SpaceInvaderTp//src//images//fondoApp.png"));
+            imageFondo.setIcon(new ImageIcon("C://Users//alejandro//Desktop//IngenieriaP//SpaceInvaderTp//src//images//fondoApp.png"));
             p4.add(imageFondo);
 
         //Incluir los paneles al Jframe
