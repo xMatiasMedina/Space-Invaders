@@ -562,7 +562,7 @@ public class Board extends JPanel implements Runnable, Commons {
         //Sound.Backgraundmusic();// Demostracion----------------------------------------------
         Score.PrintScore pScore = new Score.PrintScore();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -10,7 +10,7 @@ import java.util.List;
 public class Score {
     int score;
     String player;
-    static String file = "Leaderscore\\Tabla.txt";
+    static String file = "src\\Leaderscore\\Tabla.txt";
 
     public Score(String jugador, int puntaje) {
         player = jugador;
@@ -88,15 +88,22 @@ public class Score {
             }
             if (ranking.size() < 10) {
                 for (int i = 0; i < ranking.size(); i++) {
-                    writer.write(ranking.get(i).Refractor() + "\n");
-
+                    if (i < ranking.size()-1) {
+                        writer.write(ranking.get(i).Refractor() + "\n");
+                    }else {
+                        writer.write(ranking.get(i).Refractor());
+                    }
                     }
             } else {
                 for (int i = 0; i < 10; i++) {
-                            writer.write(ranking.get(i).Refractor() + "\n");
-                        }
-                writer.close();
+                    if (i < ranking.size()-1) {
+                        writer.write(ranking.get(i).Refractor() + "\n");
+                    }else {
+                        writer.write(ranking.get(i).Refractor());
+                    }
+                }
             }
+            writer.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
