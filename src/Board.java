@@ -393,7 +393,7 @@ public class Board extends JPanel implements Runnable, Commons {
                     while (i1.hasNext()) {
 
                         if(ovni.ufo){
-                            ovni.act(2*direction);
+                            ovni.act(direction);
                         }
 
                         Alien a2 = (Alien) i1.next();
@@ -409,7 +409,7 @@ public class Board extends JPanel implements Runnable, Commons {
 
                     while (i2.hasNext()) {
                         if(ovni.ufo){
-                            ovni.act(2*-direction);
+                            ovni.act(-direction);
                         }
 
                         Alien a = (Alien) i2.next();
@@ -562,14 +562,13 @@ public class Board extends JPanel implements Runnable, Commons {
         //Sound.Backgraundmusic();// Demostracion----------------------------------------------
         Score.PrintScore pScore = new Score.PrintScore();
         try {
-            Thread.sleep(10000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         playerN = pScore.GetName();
         score = new Score(playerN, this.puntos);
         score.SendToFile();
-        Score.Ranking();
         Score.print();
     }
 

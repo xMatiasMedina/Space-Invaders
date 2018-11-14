@@ -1,3 +1,4 @@
 player: 20
 player: 20
 player: 10
+jaspa: 70

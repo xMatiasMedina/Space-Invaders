@@ -10,7 +10,7 @@ import java.util.List;
 public class Score {
     int score;
     String player;
-    static String file = "C:\\Users\\matig\\Desktop\\Space-Invaders\\src\\Leaderscore\\Tabla.txt";
+    static String file = "Leaderscore\\Tabla.txt";
 
     public Score(String jugador, int puntaje) {
         player = jugador;
@@ -41,7 +41,7 @@ public class Score {
 
     }
 
-    public static List<Score> Ranking() {
+    private static List<Score> Ranking() {
         try {
             Score inter;
             Score inter2;
@@ -88,19 +88,13 @@ public class Score {
             }
             if (ranking.size() < 10) {
                 for (int i = 0; i < ranking.size(); i++) {
-                    if(i == ranking.size() -1) {
-                        writer.write(ranking.get(i).Refractor());
-                        }else {writer.write(ranking.get(i).Refractor() + "\n");
-                     }
+                    writer.write(ranking.get(i).Refractor() + "\n");
+
                     }
             } else {
                 for (int i = 0; i < 10; i++) {
-                    if(i == ranking.size() -1) {
-                        writer.write(ranking.get(i).Refractor());
-
-                    }else {writer.write(ranking.get(i).Refractor() + "\n");
-                    }
-                }
+                            writer.write(ranking.get(i).Refractor() + "\n");
+                        }
                 writer.close();
             }
         } catch (FileNotFoundException e) {
