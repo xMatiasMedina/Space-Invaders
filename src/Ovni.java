@@ -10,7 +10,7 @@ public class Ovni extends Sprite {
     private final int START_Y = 30;
     private final int START_X = 250;
     int tiemporestante;
-    int puntos=200;
+    int puntos= (int) (Math.random()*250) + 50;
 
 
     public Ovni(){initOvni();}

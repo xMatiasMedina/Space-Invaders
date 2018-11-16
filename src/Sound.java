@@ -1,16 +1,15 @@
-//import javazoom.jl.decoder.JavaLayerException;
-//import javazoom.jl.player.Player;
+import javazoom.jl.decoder.JavaLayerException;
+import javazoom.jl.player.Player;
 import java.io.*;
 
 //Con esta clase pueden reproducir los sonidos que quieran, pero tengan en cuenta que NO SE REPRODUSEN EN SEGUNDO PLANO
 //Descarguen el http://www.javazoom.net/javalayer/sources.html
 
 public class Sound {
-/*
     static String music;
 
     public static void DeathSound(){
-        music="src/Sound/SNAKE_SNAAAAKE.mp3";
+        music="src/Sound/Snaaaaake.mpeg";
         try {
             Reproductor();
         } catch (IOException e) {
@@ -49,6 +48,5 @@ public class Sound {
         }
     }
 
-    */
 }
 

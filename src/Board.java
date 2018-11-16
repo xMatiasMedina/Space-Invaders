@@ -226,6 +226,7 @@ public class Board extends JPanel implements Runnable, Commons {
 
         g.setColor(Color.black);
         g.fillRect(0, 0, BOARD_WIDTH, BOARD_HEIGHT);
+        Sound.DeathSound();
 
         this.RedoArea();
 
@@ -327,7 +328,7 @@ public class Board extends JPanel implements Runnable, Commons {
                             alien.setDying(true);
                             //
                             if(!ovni.ufo) {
-                                ovni.tiemporestante = 30;
+                                ovni.tiemporestante = (int)(Math.random()*15) + 45;
                                 ovni.Timeris();
                             }
                             //
@@ -530,8 +531,8 @@ public class Board extends JPanel implements Runnable, Commons {
         beforeTime = System.currentTimeMillis();
 
         while (ingame) {
+           //Sound.Backgraundmusic();
             repaint();
-
             try {
                 animationCycle();
             } catch (InterruptedException e) {
