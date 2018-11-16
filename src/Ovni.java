@@ -41,7 +41,6 @@ public class Ovni extends Sprite {
             public void run() {
                 if(!(tiemporestante<=0)) {
                     tiemporestante-=1;
-                    System.out.println(tiemporestante);
                 }
             }
         };

@@ -27,9 +27,7 @@ public class AppBar extends JFrame implements MenuListener ,ActionListener, KeyL
 
     public static void main(String[] args) {
         AppBar ap= new AppBar();
-        //centerFRAME(ap);
-        //maximiseFrame(ap); //no se que hace, maximisa los frames en la pantalla
-        ap.setVisible(true);//Se puede ver lo creado, es decir el menu
+        ap.setVisible(true);
     }
 
     public AppBar() {
@@ -37,13 +35,13 @@ public class AppBar extends JFrame implements MenuListener ,ActionListener, KeyL
         //Crear el diseno y las caracteristicas principales del la AppBar, mi clase, o JFrame, es lo mismo
             this.setTitle("SpaceInvader");
             this.setLayout(new FlowLayout());
-            this.setSize(500, 500);// NO CAMBIA PORQ ESTA AUTO AL PC
+            this.setSize(500, 500);
             this.setResizable(false);
-            this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//o desp ver q hacer
+            this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
         //APP ESUCHA LA LETRA
-            this.addKeyListener(this);//antes en vez de "f" era this
+            this.addKeyListener(this);
 
         //Crear un MenuBar
             menuBar = new JMenuBar();
@@ -52,33 +50,33 @@ public class AppBar extends JFrame implements MenuListener ,ActionListener, KeyL
             Game = new JMenu("Game...");
             Game.setMnemonic(KeyEvent.VK_S);
             Game.addMenuListener(this);
-            menuBar.add(Game);  //Agregar al menu bar
+            menuBar.add(Game);
 
         //Crear la Help en el MBar
             Help = new JMenu("Help...");
             Help.addMenuListener(this);
-            menuBar.add(Help);  //Agregar al menu bar
+            menuBar.add(Help);
 
         //Exit en el menu Bar
             Quit= new JMenu("Quit");
             Quit.setMnemonic(KeyEvent.VK_ESCAPE);
             Quit.addMenuListener(this);
-            menuBar.add(Quit);  //Agregar al menu bar
+            menuBar.add(Quit);
 
-        //Sub-de la Lista Menu --> Me tira una foto x solo por probar
+        //Sub-de la Lista Menu -->
             Creditos= new JMenuItem("Creditos");
             Creditos.setMnemonic(KeyEvent.VK_C);
             Creditos.addActionListener(new Action1());
-            Help.add(Creditos); //Agregar al menu bar
+            Help.add(Creditos);
 
         //Sub de la Lista Menu
             Start= new JMenuItem("Start");
             Start.addActionListener(new Action3());
-            Game.add(Start);    //Agregar al menu bar
+            Game.add(Start);
 
 
         //Agregar el MenuBar y su "label" al frame
-            this.setJMenuBar(menuBar);  //Aplicar el menuBar creado, puede ir "f"
+            this.setJMenuBar(menuBar);
 
 
 
@@ -87,10 +85,10 @@ public class AppBar extends JFrame implements MenuListener ,ActionListener, KeyL
             creditos.addActionListener(new Action1());
             quit.addActionListener(new Action2());
             jugar.addActionListener(new Action3());
-            leadSco.addActionListener(new Action4());          //IGUAL QUE EL OTRO, HAY Q CONSTRUIRLO
+            leadSco.addActionListener(new Action4());
 
         //JPANEL
-            JPanel p1= new JPanel();    // son paneles para los botons, creo q tambient txt
+            JPanel p1= new JPanel();
             JPanel p2= new JPanel();
             JPanel p3= new JPanel();
             JPanel p4= new JPanel();
@@ -121,36 +119,14 @@ public class AppBar extends JFrame implements MenuListener ,ActionListener, KeyL
             quit.addActionListener(this);
             creditos.addActionListener(this);
             leadSco.addActionListener(this);
-            validate(); //Validar la foto, creo q hay cortoCirc con el layOut
+            validate();
 
         //Jframe/AppBar que se pueda ver, que se vean los bottons y eso
-            this.setVisible(true);  //o podes hacer:    f.setVis.....
+            this.setVisible(true);
 
 
     }
 
-
-
-
-
-
-    /*  Como suena, va al max size
-    private static void maximiseFrame(JFrame fr){
-        //Get the Size of the screen
-        Dimension  dim = Toolkit.getDefaultToolkit().getScreenSize();
-
-        //Determina el tamano de la pantalla
-        int w=dim.width;
-        int h=dim.height;
-
-        //Frames = Screen
-        fr.setSize(w,h);
-
-        //Windows al costado izquierdo superior
-        fr.setLocation(0,0);
-
-    }
-    */
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -166,8 +142,8 @@ public class AppBar extends JFrame implements MenuListener ,ActionListener, KeyL
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyChar()==(char)27){   //codigo ascII de "esc"
-            System.exit(0); //Cerrar programa al tocar "esc"
+        if(e.getKeyChar()==(char)27){
+            System.exit(0);
         }
         if(e.getKeyChar()== 'c'){
             System.out.println("ccccc");
@@ -186,7 +162,7 @@ public class AppBar extends JFrame implements MenuListener ,ActionListener, KeyL
     @Override
     public void menuSelected(MenuEvent e) {
         if(e.getSource().equals(Quit)){
-            System.exit(0); //Cerrar programa una vez q toquemos quit
+            System.exit(0);
         }
     }
 

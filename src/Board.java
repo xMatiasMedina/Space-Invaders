@@ -281,8 +281,6 @@ public class Board extends JPanel implements Runnable, Commons {
             }
             deaths = 0;
             gameInit();
-
-
         }
 
         // player
@@ -291,9 +289,7 @@ public class Board extends JPanel implements Runnable, Commons {
             ovni.setUFO();
         }
 
-
         // shot
-
 
         if (shot.isVisible()) {
 
@@ -323,8 +319,7 @@ public class Board extends JPanel implements Runnable, Commons {
                             && shotY >= (alienY)
                             && shotY <= (alienY + ALIEN_HEIGHT)) {
                         alien.health -= player.damage;
-                        contador++;//VERRRRRRRRRRRRRRRRRRRRRRRR
-                        System.out.println(contador);
+                        contador++;
                         if (alien.health <= 0) {
                             puntos += alien.puntos;
                             ImageIcon ii = new ImageIcon(explImg);
@@ -341,14 +336,12 @@ public class Board extends JPanel implements Runnable, Commons {
                                 if ("inmunidad".equals(alien.ventaja)) {
                                     if (!player.doubleDamage && !player.congelar && player.tiemporestante == 0) {
                                         player.setInmunidad(true, 5);
-                                        System.out.println("inmunidad");
                                         contador = 0;
                                     }
                                 }
                                 if ("doubleDamage".equals(alien.ventaja)) {
                                     if (!player.inmunidad && !player.congelar && player.tiemporestante == 0) {
                                         player.setDamage(true, 2, 5);// CAMBIAR
-                                        System.out.println("dobleD");
                                         contador = 0;
 
                                     }
@@ -357,7 +350,6 @@ public class Board extends JPanel implements Runnable, Commons {
                                 if ("congelar".equals(alien.ventaja)) {
                                     if (!player.inmunidad && !player.doubleDamage && player.tiemporestante == 0) {
                                         player.setCongelar(true, 5);
-                                        System.out.println("Congelar");
                                         contador = 0;
                                     }
                                 }
@@ -382,9 +374,8 @@ public class Board extends JPanel implements Runnable, Commons {
 
         // aliens
 
-        //********************************************************************************
         if (!player.congelar) {
-            //*******************************************************************************
+
 
             for (Alien alien : aliens) {
 
@@ -442,9 +433,9 @@ public class Board extends JPanel implements Runnable, Commons {
                 }
             }
 
-        //*******************************************************************************
+
         }
-        //*******************************************************************************
+
         // bombs
 
         if(!player.congelar) {
@@ -497,7 +488,7 @@ public class Board extends JPanel implements Runnable, Commons {
                             && bombY >= (playerY)
                             && bombY <= (playerY + PLAYER_HEIGHT)) {
                         if (player.inmunidad) {
-                        }//player.tiemporestante--;
+                        }
                         else {
                             player.health--;
                         }
@@ -506,7 +497,7 @@ public class Board extends JPanel implements Runnable, Commons {
                             alive = false;
                             player.setImage(ii.getImage());
                             player.setDying(true);
-                           // Sound.DeathSound();--------------------------------------
+
                         }
                         b.setDestroyed(true);
                     }
@@ -522,9 +513,7 @@ public class Board extends JPanel implements Runnable, Commons {
                     }
                 }
             }
-            //******************************************************************
         }
-        //******************************************************
     }
 
     @Override
@@ -535,7 +524,6 @@ public class Board extends JPanel implements Runnable, Commons {
         beforeTime = System.currentTimeMillis();
 
         while (ingame) {
-           //Sound.Backgraundmusic();
             repaint();
             try {
                 animationCycle();
@@ -564,15 +552,15 @@ public class Board extends JPanel implements Runnable, Commons {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //Sound.Backgraundmusic();// Demostracion----------------------------------------------
+
         Score.PrintScore pScore = new Score.PrintScore();
         try {
-            Thread.sleep(5000);
+            Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         playerN = pScore.GetName();
-        score = new Score(playerN, this.puntos);
+        score = new Score(playerN, puntos);
         score.SendToFile();
         Score.print();
     }

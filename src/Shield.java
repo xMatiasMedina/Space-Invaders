@@ -11,10 +11,6 @@ public class Shield extends  Sprite{
 
     private static final int SHIELD_INIT_X = 20;
     private static final int SHIELD_INIT_Y = 255;
-  //  int posicionInicialEsudo_X=
-
-
-
 
 
     Shield(int x, int y){

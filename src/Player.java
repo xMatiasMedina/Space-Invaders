@@ -9,13 +9,13 @@ public class Player extends Sprite implements Commons {
     int health=3;
     int damage=1;
 
+
     private final int START_Y = 280;
     private final int START_X = 270;
 
     public  String playerImg = "src/images/player.png";
     private int width;
 
-    //*******************************************************************************
     //Ventajas:
 
     //Shield
@@ -26,13 +26,10 @@ public class Player extends Sprite implements Commons {
     boolean congelar=false;
     //LosTres
     int tiemporestante;
-    //********************************************************************************
+
 
 
     public Player() { initPlayer(); }
-
-
-    //******************************************************************************************************
 
 
     public void setDamage(boolean doubleDamage,int damage, int tiempo) {
@@ -62,7 +59,6 @@ public class Player extends Sprite implements Commons {
             public void run() {
                 if(!(tiemporestante<=0)) {
                     tiemporestante-=1;
-                    System.out.println(tiemporestante);
                 }
             }
         };
