@@ -271,7 +271,7 @@ public class AppBar extends JFrame implements MenuListener ,ActionListener, KeyL
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            Dimension d= new Dimension(1000,150);
+            Dimension d= new Dimension(2000,150);
             JFrame ff = new JFrame("Top Defenders ");
             ff.setVisible(true);
             ff.setResizable(false);

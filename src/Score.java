@@ -78,7 +78,7 @@ public class Score {
         String devolver = "";
         List<Score> ranking = Ranking();
         for (int i = 0; i < ranking.size(); i++){
-            devolver = devolver + ranking.get(i).Refractor() + " | ";
+            devolver = devolver + (i+1) + ". " + ranking.get(i).Refractor() + " | ";
         }
         return devolver;
     }

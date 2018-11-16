@@ -17,6 +17,15 @@ public class Sound {
         }
 
     }
+    public static void VictorySound(){
+        music="src/Sound/final_fantasy.mp3";
+        try {
+            Reproductor();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
     public static void Backgraundmusic(){
         music= "src/Sound/lfz-echoes-ncs-release.mp3";
         try {

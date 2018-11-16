@@ -1,2 +1,3 @@
 GameMaster: 9999999
+pruebas: 180
 prueba: 0

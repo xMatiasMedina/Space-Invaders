@@ -272,10 +272,41 @@ public class Board extends JPanel implements Runnable, Commons {
             nivel++;
             if (nivel > 5) {
                 ingame = false;
-                message = "Game won!";
+                Graphics g = this.getGraphics();
+
+                g.setColor(Color.black);
+                g.fillRect(0, 0, BOARD_WIDTH, BOARD_HEIGHT);
+                Sound.VictorySound();
+
+                this.RedoArea();
+
+                Font small = new Font("Helvetica", Font.BOLD, 14);
+                FontMetrics metr = this.getFontMetrics(small);
+
+                g.setColor(Color.white);
+                g.setFont(small);
+                g.drawString("Game won!", (BOARD_WIDTH - metr.stringWidth(message)) / 2,
+                        BOARD_WIDTH / 2);
+
+                this.RedoArea();
+
+                g.drawString("Score: " + puntos, (BOARD_WIDTH - metr.stringWidth(message)) / 2,
+                        BOARD_WIDTH / 2);
+
+                this.RedoArea();
+                Score.PrintScore pScore = new Score.PrintScore();
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                playerN = pScore.GetName();
+                score = new Score(playerN, this.puntos);
+                score.SendToFile();
+                Score.print();
+
             }
 
-            deaths = 0;
             gameInit();
 
 
