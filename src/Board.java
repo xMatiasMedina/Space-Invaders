@@ -226,7 +226,12 @@ public class Board extends JPanel implements Runnable, Commons {
 
         g.setColor(Color.black);
         g.fillRect(0, 0, BOARD_WIDTH, BOARD_HEIGHT);
-        Sound.DeathSound();
+        if(message.equals("Game over")){
+            Sound.DeathSound();
+        }else{
+            Sound.VictorySound();
+        }
+
 
         this.RedoArea();
 
@@ -235,7 +240,7 @@ public class Board extends JPanel implements Runnable, Commons {
 
         g.setColor(Color.white);
         g.setFont(small);
-        g.drawString("Game over", (BOARD_WIDTH - metr.stringWidth(message)) / 2,
+        g.drawString(message, (BOARD_WIDTH - metr.stringWidth(message)) / 2,
                 BOARD_WIDTH / 2);
 
         this.RedoArea();
@@ -272,41 +277,9 @@ public class Board extends JPanel implements Runnable, Commons {
             nivel++;
             if (nivel > 5) {
                 ingame = false;
-                Graphics g = this.getGraphics();
-
-                g.setColor(Color.black);
-                g.fillRect(0, 0, BOARD_WIDTH, BOARD_HEIGHT);
-                Sound.VictorySound();
-
-                this.RedoArea();
-
-                Font small = new Font("Helvetica", Font.BOLD, 14);
-                FontMetrics metr = this.getFontMetrics(small);
-
-                g.setColor(Color.white);
-                g.setFont(small);
-                g.drawString("Game won!", (BOARD_WIDTH - metr.stringWidth(message)) / 2,
-                        BOARD_WIDTH / 2);
-
-                this.RedoArea();
-
-                g.drawString("Score: " + puntos, (BOARD_WIDTH - metr.stringWidth(message)) / 2,
-                        BOARD_WIDTH / 2);
-
-                this.RedoArea();
-                Score.PrintScore pScore = new Score.PrintScore();
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                playerN = pScore.GetName();
-                score = new Score(playerN, this.puntos);
-                score.SendToFile();
-                Score.print();
-
+                message = "Game won!";
             }
-
+            deaths = 0;
             gameInit();
 
 
@@ -425,7 +398,7 @@ public class Board extends JPanel implements Runnable, Commons {
                     while (i1.hasNext()) {
 
                         if(ovni.ufo){
-                            ovni.act(direction);
+                            ovni.act(2*direction);
                         }
 
                         Alien a2 = (Alien) i1.next();
@@ -441,7 +414,7 @@ public class Board extends JPanel implements Runnable, Commons {
 
                     while (i2.hasNext()) {
                         if(ovni.ufo){
-                            ovni.act(-direction);
+                            ovni.act(-2*direction);
                         }
 
                         Alien a = (Alien) i2.next();
@@ -585,7 +558,7 @@ public class Board extends JPanel implements Runnable, Commons {
 
             beforeTime = System.currentTimeMillis();
         }
-
+        message = "Game over";
         try {
             gameOver();
         } catch (InterruptedException e) {

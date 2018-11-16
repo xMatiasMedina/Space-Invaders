@@ -1,3 +1,5 @@
 GameMaster: 9999999
 pruebas: 180
+null: 30
+pruebass: 10
 prueba: 0
