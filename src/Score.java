@@ -74,6 +74,14 @@ public class Score {
         }
         return null;
     }
+    public static String RankingString(){
+        String devolver = "";
+        List<Score> ranking = Ranking();
+        for (int i = 0; i < ranking.size(); i++){
+            devolver = devolver + ranking.get(i).Refractor() + "\n";
+        }
+        return devolver;
+    }
 
     public static void print() {
         try {

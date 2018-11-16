@@ -65,12 +65,6 @@ public class AppBar extends JFrame implements MenuListener ,ActionListener, KeyL
             Quit.addMenuListener(this);
             menuBar.add(Quit);  //Agregar al menu bar
 
-        //Crear la LeaderScore
-            LeaderScore = new JMenu("LeaderScore");
-            LeaderScore.addMenuListener(this);
-            LeaderScore.setEnabled(false);          //HASTA Q SE CONSTRUYA
-            menuBar.add(LeaderScore);   //Agregar al menu bar
-
         //Sub-de la Lista Menu --> Me tira una foto x solo por probar
             Creditos= new JMenuItem("Creditos");
             Creditos.setMnemonic(KeyEvent.VK_C);
@@ -93,7 +87,7 @@ public class AppBar extends JFrame implements MenuListener ,ActionListener, KeyL
             creditos.addActionListener(new Action1());
             quit.addActionListener(new Action2());
             jugar.addActionListener(new Action3());
-            leadSco.setEnabled(false);          //IGUAL QUE EL OTRO, HAY Q CONSTRUIRLO
+            leadSco.addActionListener(new Action4());          //IGUAL QUE EL OTRO, HAY Q CONSTRUIRLO
 
         //JPANEL
             JPanel p1= new JPanel();    // son paneles para los botons, creo q tambient txt
@@ -271,6 +265,21 @@ public class AppBar extends JFrame implements MenuListener ,ActionListener, KeyL
             f.setResizable(false);
             Sprite ej = new Sprite();   //de aca lo metimos nosotros
             ej.setVisible(true);
+        }
+    }
+    class Action4 extends JFrame implements ActionListener, Commons{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Dimension d= new Dimension(358,350);
+            JFrame ff = new JFrame("Top Defenders ");
+            ff.setVisible(true);
+            ff.setResizable(false);
+            ff.setSize(d.width, d.height);
+            JLabel puntajes = new JLabel(Score.RankingString());
+            JPanel panel = new JPanel();
+            panel.add(puntajes);
+            ff.add(panel);
         }
     }
 
