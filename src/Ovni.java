@@ -6,7 +6,7 @@ public class Ovni extends Sprite {
 
     int health;
     boolean ufo=false;
-    String ovnif=("src/images/ufo.png");
+    String ovnif=("src/images/UFO.png");
     private final int START_Y = 30;
     private final int START_X = 250;
     int tiemporestante;
